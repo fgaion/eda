@@ -7,6 +7,6 @@ Some sources in C and CPP
 01 - Reviews
 02 - Recursion
 03 - Stack and Queue
-03 - Graphs
-04 - Trees (binary, binary search, AVL)
-05 - Sorting and Searching
+05 - Trees (binary, binary search, AVL)
+05 - Graphs
+06 - Sorting and Searching
