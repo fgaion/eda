@@ -1,9 +1,11 @@
 //GRAFOS02.CPP
 //Grafos utilizando matriz de incidˆncias
 
-#include <conio.h>
-#include <iostream.h>
+#include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
 
+using namespace std;
 #define MAX_NO 5
 #define MAX_ARESTA 10
 
@@ -21,92 +23,75 @@ int G2[MAX_NO][MAX_ARESTA] = {
 	   { 0, 0, 0, 1, 1, 0, 1, 0,-1, 5},
 	   { 0, 0, 0, 0,-1,-1, 0, 0, 1, 5} };
 
-void ImpMat(int A[MAX_NO][MAX_ARESTA],int m,int n)
-{
+void ImpMat(int A[MAX_NO][MAX_ARESTA],int m,int n) {
   int i,j;
-  for(i=0; i < m; i++)
-  {
+  for(i=0; i < m; i++) {
     for(j=0; j < n; j++) cout << A[i][j] << " ";
     cout << "\n";
    }
 }
 
-void ImpGrauGND(int A[MAX_NO][MAX_ARESTA],int m,int n)
-{
+void ImpGrauGND(int A[MAX_NO][MAX_ARESTA],int m,int n) {
   int i,j,grau;
-  for(i=0; i < m; i++)
-  {
+  for(i=0; i < m; i++) {
     grau = 0;
     for(j=0; j < n; j++)
       if ( A[i][j] == 1 ) grau++;
-    cout << "\nN¢ " << i << " tem grau " << grau;
+    cout << "\nNo' " << i << " tem grau " << grau;
   }
 }
 
-void ImpGrauGD(int A[MAX_NO][MAX_ARESTA],int m,int n)
-{
+void ImpGrauGD(int A[MAX_NO][MAX_ARESTA],int m,int n) {
   int i,j,gs,ge;
-  for(i=0; i < m; i++)
-  {
+  for(i=0; i < m; i++) {
     gs = ge = 0;
-    for(j=0; j < n; j++)
-    {
+    for(j=0; j < n; j++) {
       if ( A[i][j] == 1  ) gs++;
       else
       if ( A[i][j] == -1 ) ge++;
       else
-      if ( A[i][j] == 2 )
-      {
-	gs++;
-	ge++;
+      if ( A[i][j] == 2 ) {
+	       gs++;
+	       ge++;
       }
     }
-    cout << "\nN¢ " << i << " tem grau de sa¡da " << gs
+    cout << "\nNo' " << i << " tem grau de saida " << gs
 	 << ", grau de entrada " << ge << " e grau total " << gs+ge;
   }
 }
 
-void ImpAdjacenciasGND(int A[MAX_NO][MAX_ARESTA],int m,int n)
-{
+void ImpAdjacenciasGND(int A[MAX_NO][MAX_ARESTA],int m,int n) {
   int i,j,k;
-  for(i=0; i<m; i++)
-  {
-    cout << "\nN¢ " << i << " ‚ adjacente a: ";
-    for(j=0; j < n; j++)
-    {
+  for(i=0; i<m; i++) {
+    cout << "\nNo' " << i << " e' adjacente a: ";
+    for(j=0; j < n; j++) {
       if ( A[i][j] == 2 ) cout << j << " ";
       else
-      if ( A[i][j] == 1 )
-      {
-	for(k=0; k < m; k++)
-	  if ( k != i && A[k][j] == 1 ) cout << k << " ";
+      if ( A[i][j] == 1 ) {
+	      for(k=0; k < m; k++)
+	        if ( k != i && A[k][j] == 1 ) cout << k << " ";
       }
     }
   }
 }
 
-void ImpAdjacenciasGD(int A[MAX_NO][MAX_ARESTA],int m,int n)
-{
+void ImpAdjacenciasGD(int A[MAX_NO][MAX_ARESTA],int m,int n) {
   int i,j,k;
-  for(i=0; i<m; i++)
-  {
-    cout << "\nN¢ " << i << " ‚ adjacente a: ";
+  for(i=0; i<m; i++) {
+    cout << "\nNo' " << i << " e' adjacente a: ";
     for(j=0; j < n; j++)
     {
       if ( A[i][j] == 2 ) cout << i << " ";
       else
-      if ( A[i][j] == 1 )
-      {
-	for(k=0; k < m; k++)
-	  if ( k != i &&  A[k][j] == -1 ) cout << k << " ";
+      if ( A[i][j] == 1 ) {
+	      for(k=0; k < m; k++)
+          if ( k != i &&  A[k][j] == -1 ) cout << k << " ";
       }
     }
   }
 }
 
-void main()
-{
-  clrscr();
+int main() {  
   ImpGrauGND(G1,5,7);
   cout << "\n";
   ImpGrauGD(G2,5,9);
@@ -114,6 +99,7 @@ void main()
   ImpAdjacenciasGND(G1,5,7);
   cout << "\n";
   ImpAdjacenciasGD(G2,5,9);
+  cout << endl;
 }
 
 
